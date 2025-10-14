@@ -17,5 +17,11 @@ class Main {
     // create a display that extends on top of the console to output rendered objects
     // these objects control their rendering but all drawing is done by the display
     // the cake will draw differently based on type of cake (ingredients, size, weight, etc.)
+
+    new Cake().Draw(6);
+
+    Console.getInstance().println("\n\n--------------\n\n");
+
+    new Cake().Draw(5);
   }
 }
