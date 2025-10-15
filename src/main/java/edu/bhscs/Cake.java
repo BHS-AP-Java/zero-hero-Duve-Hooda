@@ -13,16 +13,21 @@
 package edu.bhscs;
 
 public class Cake {
+  // -- fields & props --
   int weight;
+  String ingredients;
+  String color = "^";
 
+  // -- constructor --
   public Cake() {
     this.weight = 5;
   }
 
+  // -- methods --
   public void Draw(int h) {
     String cakeRendered = "";
 
-    //cakeRendered += RenderTop(w) + '\n';
+    // cakeRendered += RenderTop(w) + '\n';
     cakeRendered += RenderMiddle(h);
     cakeRendered += RenderBottom(h);
 
@@ -44,15 +49,19 @@ public class Cake {
     String result = "";
 
     for (int i = 0; i < height; i++) {
-      for (int j = 0; j < height - i; j++) { result += " "; }
-
-      result += "/";
-
-      for (int j = 0; j < i; j++) {
-        result += "^^";
+      for (int j = 0; j < height - i; j++) {
+        result += " ";
       }
 
-      result += "\\\n";
+      result += "/";
+      String additional = "";
+
+      for (int j = 0; j < i; j++) {
+        result += this.color;
+        additional += "\\";
+      }
+
+      result += additional + "\\\n";
     }
 
     return result;
@@ -61,32 +70,26 @@ public class Cake {
   public String RenderBottom(int height) {
     String result = "";
 
-    int width = height * 2;
+    int width = height - 1;
 
-    result += "|";
+    result += " \\";
+    String amount = "";
     for (int i = 0; i < width; i++) {
-      if (i == 0) {
-        result += "<";
-        continue;
-
-      } else if (i == width - 1) {
-        result += ">";
-        continue;
-      }
 
       result += "=";
+      amount += "/";
     }
 
-    result += "|";
+    result += amount + "/";
 
     return result;
   }
-  //     _
-  /*    /^^\
-   *   /^^^^\
-   *  /^^^^^^\
-   * /^^^^^^^^\
-   *|<========>|
+  //      /\
+  /*     /^\\
+   *    /^^\\\
+   *   /^^^\\\\
+   *  /^^^^\\\\\
+   *  \====/////
    *
    *
    *

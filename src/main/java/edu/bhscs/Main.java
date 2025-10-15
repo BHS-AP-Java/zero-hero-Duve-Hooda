@@ -18,7 +18,7 @@ class Main {
     // these objects control their rendering but all drawing is done by the display
     // the cake will draw differently based on type of cake (ingredients, size, weight, etc.)
 
-    new Cake().Draw(6);
+    new Cake().Draw(2);
 
     Console.getInstance().println("\n\n--------------\n\n");
 
