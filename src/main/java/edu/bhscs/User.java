@@ -2,11 +2,16 @@ package edu.bhscs;
 
 public class User {
 
+  // fields and props
   private String name;
 
+  // constructor
   public User(String name) {
     this.name = name;
   }
+
+
+  // methods
 
   public String getName() {
     return this.name;
@@ -24,5 +29,9 @@ public class User {
     }
 
     return null;
+  }
+
+  public String giveAnswer(String question) {
+    return "This is an answer!";
   }
 }

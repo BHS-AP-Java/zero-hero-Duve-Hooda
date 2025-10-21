@@ -22,6 +22,8 @@ public class Cake {
     this.ingredient = ingredient;
   }
 
+  public Cake() {
+  }
   // -- methods --
   public void Draw(int h) {
     String cakeRendered = "";
@@ -29,7 +31,7 @@ public class Cake {
     cakeRendered += RenderMiddle(h);
     cakeRendered += RenderBottom(h);
 
-    Console.getInstance().print(cakeRendered);
+    Console.getInstance().println(cakeRendered);
   }
 
   public String RenderTop(int width) {
@@ -81,6 +83,12 @@ public class Cake {
     result += amount + "/";
 
     return result;
+  }
+
+  public void draw(String name, String age) {
+    System.out.println("Making a cake for: `" + name + "` who is: `" + age + "` years old!");
+    this.ingredient = "c";
+    this.Draw(6);
   }
   //      /\
   /*     /^\\
