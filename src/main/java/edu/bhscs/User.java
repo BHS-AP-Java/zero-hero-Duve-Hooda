@@ -20,7 +20,7 @@ public class User {
     String ans = c.readLine();
 
     if (ans.equals("y")) {
-      return new Cake();
+      return new Cake("~");
     }
 
     return null;

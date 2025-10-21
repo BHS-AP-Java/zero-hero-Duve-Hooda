@@ -26,7 +26,6 @@ public class Cake {
   public void Draw(int h) {
     String cakeRendered = "";
 
-    // cakeRendered += RenderTop(w) + '\n';
     cakeRendered += RenderMiddle(h);
     cakeRendered += RenderBottom(h);
 
@@ -56,7 +55,7 @@ public class Cake {
       String additional = "";
 
       for (int j = 0; j < i; j++) {
-        result += this.color;
+        result += this.ingredient;
         additional += "\\";
       }
 
