@@ -15,12 +15,11 @@ package edu.bhscs;
 public class Cake {
   // -- fields & props --
   int weight;
-  String ingredients;
-  String color = "^";
+  String ingredient;
 
   // -- constructor --
-  public Cake() {
-    this.weight = 5;
+  public Cake(String ingredient) {
+    this.ingredient = ingredient;
   }
 
   // -- methods --
@@ -34,16 +33,16 @@ public class Cake {
     Console.getInstance().print(cakeRendered);
   }
 
-  // public String RenderTop(int width) {
-  //   String result = "";
+  public String RenderTop(int width) {
+    String result = "";
 
-  //   if ((width % 2) == 1) {
-  //     // odd width
-  //     result += "_\n";  //  _
-  //   }
+    if ((width % 2) == 1) {
+      // odd width
+      result += "_\n"; //  _
+    }
 
-  //   return result;
-  // }
+    return result;
+  }
 
   public String RenderMiddle(int height) {
     String result = "";
