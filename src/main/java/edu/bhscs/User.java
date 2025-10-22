@@ -10,7 +10,6 @@ public class User {
     this.name = name;
   }
 
-
   // methods
 
   public String getName() {
@@ -25,7 +24,7 @@ public class User {
     String ans = c.readLine();
 
     if (ans.equals("y")) {
-      return new Cake("~");
+      return new Cake("~", "#");
     }
 
     return null;

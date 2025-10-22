@@ -18,10 +18,10 @@ class Main {
     // these objects control their rendering but all drawing is done by the display
     // the cake will draw differently based on type of cake (ingredients, size, weight, etc.)
 
-    new Cake("y").Draw(2);
+    new Cake("y", "a").draw(2);
 
     Console.getInstance().println("\n\n--------------\n\n");
 
-    new Cake("w").Draw(5);
+    new Cake().draw(5);
   }
 }

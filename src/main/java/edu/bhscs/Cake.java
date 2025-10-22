@@ -16,16 +16,21 @@ public class Cake {
   // -- fields & props --
   int weight;
   String ingredient;
+  String ingredient2;
 
-  // -- constructor --
-  public Cake(String ingredient) {
+  // -- constructors --
+  public Cake(String ingredient, String ingredient2) {
     this.ingredient = ingredient;
+    this.ingredient2 = ingredient2;
   }
 
   public Cake() {
+    this.ingredient = "a";
+    this.ingredient2 = "b";
   }
+
   // -- methods --
-  public void Draw(int h) {
+  public void draw(int h) {
     String cakeRendered = "";
 
     cakeRendered += RenderMiddle(h);
@@ -57,7 +62,12 @@ public class Cake {
       String additional = "";
 
       for (int j = 0; j < i; j++) {
-        result += this.ingredient;
+        if (j % 2 == 0) {
+          result += this.ingredient2;
+        } else {
+          result += this.ingredient;
+        }
+
         additional += "\\";
       }
 
@@ -87,8 +97,7 @@ public class Cake {
 
   public void draw(String name, String age) {
     System.out.println("Making a cake for: `" + name + "` who is: `" + age + "` years old!");
-    this.ingredient = "c";
-    this.Draw(6);
+    this.draw(name.length());
   }
   //      /\
   /*     /^\\
