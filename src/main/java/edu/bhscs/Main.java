@@ -14,9 +14,6 @@ package edu.bhscs;
 
 class Main {
   public static void main(String[] args) {
-    // create a display that extends on top of the console to output rendered objects
-    // these objects control their rendering but all drawing is done by the display
-    // the cake will draw differently based on type of cake (ingredients, size, weight, etc.)
 
     new Cake("y", "a").draw(2);
 

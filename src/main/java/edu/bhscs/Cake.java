@@ -14,7 +14,6 @@ package edu.bhscs;
 
 public class Cake {
   // -- fields & props --
-  int weight;
   String ingredient;
   String ingredient2;
 
@@ -39,7 +38,7 @@ public class Cake {
     Console.getInstance().println(cakeRendered);
   }
 
-  public String RenderTop(int width) {
+  public String RenderTop(int width) {  
     String result = "";
 
     if ((width % 2) == 1) {
@@ -85,7 +84,6 @@ public class Cake {
     result += " \\";
     String amount = "";
     for (int i = 0; i < width; i++) {
-
       result += "=";
       amount += "/";
     }
@@ -95,19 +93,21 @@ public class Cake {
     return result;
   }
 
+  /**
+   * Draws a cake based on a provided name and age
+   *
+   * @param name The name of the player
+   * @param age The age of the player, also used for setting the height
+   */
   public void draw(String name, String age) {
     System.out.println("Making a cake for: `" + name + "` who is: `" + age + "` years old!");
-    this.draw(name.length());
+    this.draw(Integer.valueOf(age));
   }
-  //      /\
-  /*     /^\\
+  /*      /\
+   *     /^\\
    *    /^^\\\
    *   /^^^\\\\
    *  /^^^^\\\\\
    *  \====/////
-   *
-   *
-   *
-   *
    */
 }
