@@ -16,6 +16,8 @@ public class Cake {
   // -- fields & props --
   String ingredient;
   String ingredient2;
+  String name;
+  int age;
 
   // -- constructors --
   public Cake(String ingredient, String ingredient2) {
@@ -28,6 +30,11 @@ public class Cake {
     this.ingredient2 = "b";
   }
 
+  public Cake(String name, int age) {
+    this.name = name;
+    this.age = age;
+  }
+
   // -- methods --
   public void draw(int h) {
     String cakeRendered = "";
@@ -35,10 +42,10 @@ public class Cake {
     cakeRendered += RenderMiddle(h);
     cakeRendered += RenderBottom(h);
 
-    Console.getInstance().println(cakeRendered);
+    Console.getInstance().print(cakeRendered);
   }
 
-  public String RenderTop(int width) {  
+  public String RenderTop(int width) {
     String result = "";
 
     if ((width % 2) == 1) {
@@ -102,6 +109,37 @@ public class Cake {
   public void draw(String name, String age) {
     System.out.println("Making a cake for: `" + name + "` who is: `" + age + "` years old!");
     this.draw(Integer.valueOf(age));
+  }
+
+  public void draw(int height, int offset) {
+    String cakeRendered = "";
+
+    cakeRendered += RenderMiddle(height);
+    cakeRendered += RenderBottom(height);
+
+    Console.getInstance().print(cakeRendered);
+  }
+
+  public String putChars(int amt, String character) {
+    String res = "";
+    for (int i = 0; i < amt; i++) {
+      res += character;
+    }
+
+    return res;
+  }
+
+  public void draw(Table table) {
+    System.out.println("Making a cake for: `" + this.name + "` who is: `" + this.age + "` years old!");
+    this.ingredient = "#";
+    this.ingredient2 = "@";
+
+    int offset = Math.max((table.size - (this.age * 2))/2, 0);
+
+
+    this.draw(this.age, offset);
+    System.out.println("");
+    table.draw();
   }
   /*      /\
    *     /^\\
