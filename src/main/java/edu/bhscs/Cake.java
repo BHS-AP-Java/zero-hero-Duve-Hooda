@@ -114,6 +114,17 @@ public class Cake {
   public void draw(int height, int offset) {
     String cakeRendered = "";
 
+    // middle aligned test code, but we will not use that currently
+    // String[] middleLines = RenderMiddle(height).split(" ");
+    // for (int i = 0; i < middleLines.length; i++) {
+    //   cakeRendered += putChars(offset, " ") + middleLines[i];
+    // }
+
+    // String[] bottomLines = RenderBottom(height).split(" ");
+    // for (int i = 0; i < bottomLines.length; i++) {
+    //   cakeRendered += putChars(offset, " ") + bottomLines[i];
+    // }
+
     cakeRendered += RenderMiddle(height);
     cakeRendered += RenderBottom(height);
 
@@ -130,12 +141,12 @@ public class Cake {
   }
 
   public void draw(Table table) {
-    System.out.println("Making a cake for: `" + this.name + "` who is: `" + this.age + "` years old!");
+    System.out.println(
+        "Making a cake for: `" + this.name + "` who is: `" + this.age + "` years old!");
     this.ingredient = "#";
     this.ingredient2 = "@";
 
-    int offset = Math.max((table.size - (this.age * 2))/2, 0);
-
+    int offset = Math.max((table.width - (this.age * 2)) / 2, 0);
 
     this.draw(this.age, offset);
     System.out.println("");
