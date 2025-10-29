@@ -4,17 +4,13 @@
 // 10/27/25
 
 /*
- * DESCRIPTION: A table that can be drawn
- * INPUT: width or number of legs
- * OUTPUT: a cool looking table!
- * EDGE CASE: Whenever there is an even number of width the last leg is printed slightly off of the table
-*/
+ * DESCRIPTION: A table that can be drawn INPUT: width or number of legs OUTPUT: a cool looking table! EDGE CASE: Whenever there is an even number of width the last leg is printed slightly off of the
+ * table
+ */
 
 package edu.bhscs;
 
-/**
- * A base table object that can be drawn to the console
- */
+/** A base table object that can be drawn to the console */
 public class Table {
   public int legs;
   public int width;
@@ -41,16 +37,12 @@ public class Table {
     this.tableChar = top;
   }
 
-  public void draw() {
-    Console c = Console.getInstance();
-
+  public String render() {
     String res = "";
 
     int legHeight = Math.floorDiv(this.width, 4);
 
     int spacing = Math.floorDiv(this.width, this.legs - 1);
-
-    System.out.println(spacing);
 
     // print out the top of our table
     for (int i = 0; i < this.width; i++) {
@@ -61,38 +53,75 @@ public class Table {
 
     // print out the legs based off the spacing of the table
 
+    String legRow = "";
+
     // we use a nested for loop here
     // we just go over the width of the table, legHeight times
-    for (int i = 0; i < legHeight; i++) {
-      // its <= so that we have a the last leg
-      for (int j = 0; j <= this.width; j++) {
-        if (j % spacing == 0) {
-          res += this.legsChar;
-        } else {
-          res += " ";
-        }
+    // its <= so that we have a the last leg
+    for (int j = 0; j <= this.width; j++) {
+      if (j % spacing == 0) {
+        legRow += this.legsChar;
+      } else {
+        legRow += " ";
       }
-      res += "\n";
     }
 
+    if (legRow.length() > width) {
+      legRow = legRow.substring(0, width - this.legsChar.length());
+      legRow += this.legsChar;
+    }
 
-    c.println(res);
+    for (int i = 0; i < legHeight; i++) {
+      res += legRow + "\n";
+    }
+
+    return res;
   }
-  /* -----11----
+
+  public void draw() {
+    Console.getInstance().println(render());
+  }
+
+  public void draw(int offset) {
+    String res = render();
+
+    String finalResult = "";
+
+    // TABLE is bigger than CAKE
+    if (offset > 0) {
+      // so we don't gotta move
+      offset = 0;
+    }
+
+    offset = Math.abs(offset);
+
+    String[] lines = res.split("\n");
+    for (int i = 0; i < lines.length; i++) {
+      finalResult += StringHelpers.putChars(offset, " ") + lines[i] + "\n";
+    }
+
+    Console.getInstance().print(finalResult);
+  }
+
+  /*
+   * -----11----
    * ===========
    * |----9----|
-   * |         |
-   * |         |
    * |         |
    *
    */
 
-  /* -----11----
+  /*
+   * -----11----
    * ===========
    * |-4--|--4-|
    * |    |    |
    * |    |    |
-   * |    |    |
+   *
+   * -----12-----
+   * ============
+   * |----10----|
+   * |--5--|--4-|
    *
    *
    * ------1_5------

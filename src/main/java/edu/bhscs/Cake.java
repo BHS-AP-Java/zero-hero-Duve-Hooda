@@ -114,30 +114,24 @@ public class Cake {
   public void draw(int height, int offset) {
     String cakeRendered = "";
 
-    // middle aligned test code, but we will not use that currently
-    // String[] middleLines = RenderMiddle(height).split(" ");
-    // for (int i = 0; i < middleLines.length; i++) {
-    //   cakeRendered += putChars(offset, " ") + middleLines[i];
-    // }
-
-    // String[] bottomLines = RenderBottom(height).split(" ");
-    // for (int i = 0; i < bottomLines.length; i++) {
-    //   cakeRendered += putChars(offset, " ") + bottomLines[i];
-    // }
-
-    cakeRendered += RenderMiddle(height);
-    cakeRendered += RenderBottom(height);
-
-    Console.getInstance().print(cakeRendered);
-  }
-
-  public String putChars(int amt, String character) {
-    String res = "";
-    for (int i = 0; i < amt; i++) {
-      res += character;
+    // this means that CAKE is bigger than TABLE
+    if (offset < 0) {
+      // so we don't gotta move our cake duh
+      offset = 0;
     }
 
-    return res;
+    // middle aligned test code, but we will not use that currently
+    String[] middleLines = RenderMiddle(height).split("\n");
+    for (int i = 0; i < middleLines.length; i++) {
+      cakeRendered += StringHelpers.putChars(offset, " ") + middleLines[i] + "\n";
+    }
+
+    String[] bottomLines = RenderBottom(height).split("\n");
+    for (int i = 0; i < bottomLines.length; i++) {
+      cakeRendered += StringHelpers.putChars(offset, " ") + bottomLines[i] + "\n";
+    }
+
+    Console.getInstance().print(cakeRendered);
   }
 
   public void draw(Table table) {
@@ -146,11 +140,12 @@ public class Cake {
     this.ingredient = "#";
     this.ingredient2 = "@";
 
-    int offset = Math.max((table.width - (this.age * 2)) / 2, 0);
+    int offset = (table.width - (this.age * 2)) / 2;
+
+    System.out.println(offset);
 
     this.draw(this.age, offset);
-    System.out.println("");
-    table.draw();
+    table.draw(offset);
   }
   /*      /\
    *     /^\\
