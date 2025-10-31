@@ -144,8 +144,6 @@ public class Cake implements Offsetable {
     //  offset = (   20       -  (5 * 2)) / 2
     int offset = (table.width - (this.age * 2)) / 2;
 
-    System.out.println(offset);
-
     // attempting to use an interface here...
 
     // table recieves a negated version bc our calculation is diff from table to cake

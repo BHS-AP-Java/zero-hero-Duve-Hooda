@@ -4,8 +4,11 @@
 // 10/27/25
 
 /*
- * DESCRIPTION: A table that can be drawn INPUT: width or number of legs OUTPUT: a cool looking table! EDGE CASE: Whenever there is an even number of width the last leg is printed slightly off of the
- * table
+ * DESCRIPTION: A table that can be drawn
+ * INPUT: width or number of legs
+ * OUTPUT: a cool looking table!
+ * EDGE CASE: Whenever there is an even number of width the last leg is printed slightly off of the
+ * table. Also if the legs are beyond a certain size the table will start drawing extremely weirdly
  */
 
 package edu.bhscs;
@@ -46,8 +49,13 @@ public class Table implements Offsetable {
 
     int spacing = Math.floorDiv(this.width, this.legs - 1);
 
+    // to help make our spacing more accurate basded on the size of our leg
+    spacing -= (this.legsChar.length() - 1);
+
     // print out the top of our table
-    for (int i = 0; i < this.width; i++) {
+    // notice how isntead of i++, i use this.tableChar.length() meaning that i increases based on the chars added
+    // pretty cool man
+    for (int i = 0; i < this.width; i += this.tableChar.length()) {
       res += this.tableChar;
     }
 

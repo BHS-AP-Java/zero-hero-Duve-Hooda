@@ -28,5 +28,12 @@ class Main {
     Table t = new Table(3, 15);
     Cake bDay = bob.bakes(10, "Suzzie");
     bDay.draw(t);
+
+    // attempting to use different characters for table (multi length)
+
+    t.setLegs("||");
+    t.setTop("==");
+
+    bDay.draw(t);
   }
 }
