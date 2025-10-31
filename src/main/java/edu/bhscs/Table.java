@@ -11,9 +11,11 @@
 package edu.bhscs;
 
 /** A base table object that can be drawn to the console */
-public class Table {
+public class Table implements Offsetable {
   public int legs;
   public int width;
+
+  private int offset = 0;
 
   private String legsChar = "|";
   private String tableChar = "=";
@@ -78,22 +80,18 @@ public class Table {
     return res;
   }
 
-  public void draw() {
-    Console.getInstance().println(render());
+  public int getOffset() {
+    return this.offset;
   }
 
-  public void draw(int offset) {
+  public void setOffset(int offset) {
+    this.offset = offset;
+  }
+
+  public void draw() {
     String res = render();
 
     String finalResult = "";
-
-    // TABLE is bigger than CAKE
-    if (offset > 0) {
-      // so we don't gotta move
-      offset = 0;
-    }
-
-    offset = Math.abs(offset);
 
     String[] lines = res.split("\n");
     for (int i = 0; i < lines.length; i++) {

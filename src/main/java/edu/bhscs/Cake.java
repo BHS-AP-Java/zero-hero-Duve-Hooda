@@ -12,12 +12,14 @@
 
 package edu.bhscs;
 
-public class Cake {
+public class Cake implements Offsetable {
   // -- fields & props --
   String ingredient;
   String ingredient2;
   String name;
   int age;
+
+  int offset = 0;
 
   // -- constructors --
   public Cake(String ingredient, String ingredient2) {
@@ -36,13 +38,13 @@ public class Cake {
   }
 
   // -- methods --
-  public void draw(int h) {
-    String cakeRendered = "";
 
-    cakeRendered += RenderMiddle(h);
-    cakeRendered += RenderBottom(h);
+  public int getOffset() {
+    return this.offset;
+  }
 
-    Console.getInstance().print(cakeRendered);
+  public void setOffset(int offset) {
+    this.offset = offset;
   }
 
   public String RenderTop(int width) {
@@ -111,14 +113,13 @@ public class Cake {
     this.draw(Integer.valueOf(age));
   }
 
-  public void draw(int height, int offset) {
+  /**
+   * Draw a cake based on a height value (automatically finds offset)
+   *
+   * @param height The height of the cake to draw
+   */
+  public void draw(int height) {
     String cakeRendered = "";
-
-    // this means that CAKE is bigger than TABLE
-    if (offset < 0) {
-      // so we don't gotta move our cake duh
-      offset = 0;
-    }
 
     // middle aligned test code, but we will not use that currently
     String[] middleLines = RenderMiddle(height).split("\n");
@@ -140,12 +141,20 @@ public class Cake {
     this.ingredient = "#";
     this.ingredient2 = "@";
 
+    //  offset = (   20       -  (5 * 2)) / 2
     int offset = (table.width - (this.age * 2)) / 2;
 
     System.out.println(offset);
 
-    this.draw(this.age, offset);
-    table.draw(offset);
+    // attempting to use an interface here...
+
+    // table recieves a negated version bc our calculation is diff from table to cake
+    // (offset = how much cake should move over)
+    table.setOffset(-offset);
+    this.setOffset(offset);
+
+    this.draw(this.age);
+    table.draw();
   }
   /*      /\
    *     /^\\
