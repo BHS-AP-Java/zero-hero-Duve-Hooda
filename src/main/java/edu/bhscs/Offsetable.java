@@ -7,8 +7,10 @@ public interface Offsetable {
   int offset = 0;
 
   /**
-   * Sets the offset of the current object Negative values means that this object does not need to
+   * Sets the offset of the current object; Negative values means that this object does not need to
    * be offset
    */
   public void setOffset(int offset);
+
+  public int getOffset();
 }

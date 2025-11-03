@@ -53,7 +53,8 @@ public class Table implements Offsetable {
     spacing -= (this.legsChar.length() - 1);
 
     // print out the top of our table
-    // notice how isntead of i++, i use this.tableChar.length() meaning that i increases based on the chars added
+    // notice how isntead of i++, i use this.tableChar.length() meaning that i increases based on
+    // the chars added
     // pretty cool man
     for (int i = 0; i < this.width; i += this.tableChar.length()) {
       res += this.tableChar;
