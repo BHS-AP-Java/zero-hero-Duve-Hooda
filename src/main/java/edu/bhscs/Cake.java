@@ -113,6 +113,8 @@ public class Cake implements Offsetable {
     this.draw(Integer.valueOf(age));
   }
 
+
+
   /**
    * Draw a cake based on a height value (automatically finds offset)
    *
@@ -135,19 +137,30 @@ public class Cake implements Offsetable {
     Console.getInstance().print(cakeRendered);
   }
 
+  /**
+   * Draws the cake using a table to be placed on
+   * Really it just calls table.draw(offset) and cake.draw(offset)
+   * Just with some extra steps
+   *
+   * @param table The table to place the cake on
+   */
   public void draw(Table table) {
-    System.out.println(
+    Console.getInstance().println(
         "Making a cake for: `" + this.name + "` who is: `" + this.age + "` years old!");
     this.ingredient = "#";
     this.ingredient2 = "@";
 
-    //  offset = (   20       -  (5 * 2)) / 2
-    int offset = (table.width - (this.age * 2)) / 2;
+    // we double our age since the cake width is age * 2
+    int offset = MathHelpers.calculateOffset(table.width, this.age * 2);
 
     // attempting to use an interface here...
 
     // table recieves a negated version bc our calculation is diff from table to cake
     // (offset = how much cake should move over)
+
+    // i think we should change this because this still feels like
+    // "cake is the one who controls table"
+    // which shouldn't be the way it works...
     table.setOffset(-offset);
     this.setOffset(offset);
 
