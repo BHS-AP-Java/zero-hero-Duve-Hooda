@@ -19,19 +19,34 @@ public class Cake implements Offsetable {
   String name;
   int age;
 
-  int offset = 0;
+  // interface requirements
+  private int offset = 0;
 
   // -- constructors --
+
+  /**
+   * Creates a cake with two ingredients (Strings). These ingredients are alternated when generating the cake
+   * @param ingredient A string for ingredient #1
+   * @param ingredient2 A string for ingredient #2
+   */
   public Cake(String ingredient, String ingredient2) {
     this.ingredient = ingredient;
     this.ingredient2 = ingredient2;
   }
 
+  /**
+   * The default constructor of cake, when ran it defaults ingredients to "a" and "b"
+   */
   public Cake() {
     this.ingredient = "a";
     this.ingredient2 = "b";
   }
 
+  /**
+   * Name + age constructor of cake
+   * @param name The name of the player
+   * @param age The age of the player
+   */
   public Cake(String name, int age) {
     this.name = name;
     this.age = age;
@@ -47,6 +62,12 @@ public class Cake implements Offsetable {
     this.offset = offset;
   }
 
+  /**
+   * Renders the top of the cake
+   *
+   * @param width Width of the cake
+   * @return The Rendered top of the cake
+   */
   public String RenderTop(int width) {
     String result = "";
 
@@ -58,6 +79,12 @@ public class Cake implements Offsetable {
     return result;
   }
 
+  /**
+   * Renders the middle of the cake (core part of the cake)
+   *
+   * @param height the height of the cake
+   * @return the Rendered String of the middle
+   */
   public String RenderMiddle(int height) {
     String result = "";
 
@@ -85,6 +112,12 @@ public class Cake implements Offsetable {
     return result;
   }
 
+  /**
+   * Renders the small bottom part of the cake
+   *
+   * @param height the height of the cake
+   * @return the Rendered string of the bottom
+   */
   public String RenderBottom(int height) {
     String result = "";
 
@@ -113,8 +146,6 @@ public class Cake implements Offsetable {
     this.draw(Integer.valueOf(age));
   }
 
-
-
   /**
    * Draw a cake based on a height value (automatically finds offset)
    *
@@ -139,14 +170,14 @@ public class Cake implements Offsetable {
 
   /**
    * Draws the cake using a table to be placed on
-   * Really it just calls table.draw(offset) and cake.draw(offset)
-   * Just with some extra steps
+   *
+   * <p>Really it just calls table.draw(offset) and cake.draw(offset); Just with some extra steps
    *
    * @param table The table to place the cake on
    */
   public void draw(Table table) {
-    Console.getInstance().println(
-        "Making a cake for: `" + this.name + "` who is: `" + this.age + "` years old!");
+    Console.getInstance()
+        .println("Making a cake for: `" + this.name + "` who is: `" + this.age + "` years old!");
     this.ingredient = "#";
     this.ingredient2 = "@";
 
@@ -156,7 +187,7 @@ public class Cake implements Offsetable {
     // attempting to use an interface here...
 
     // table recieves a negated version bc our calculation is diff from table to cake
-    // (offset = how much cake should move over)
+    // (offset = how much cake should move over, therefore negative means table should move)
 
     // i think we should change this because this still feels like
     // "cake is the one who controls table"
@@ -164,6 +195,7 @@ public class Cake implements Offsetable {
     table.setOffset(-offset);
     this.setOffset(offset);
 
+    // now draw!
     this.draw(this.age);
     table.draw();
   }

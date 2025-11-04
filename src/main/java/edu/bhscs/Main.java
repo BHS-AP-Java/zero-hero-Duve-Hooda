@@ -19,7 +19,6 @@ class Main {
   }
 
   public static void date10_27() {
-    // ORIGINAL CODE:
     Baker bob = new Baker("Bob");
     Table t = new Table(3, 15);
     Cake bDay = bob.bakes(10, "Suzzie");

@@ -5,8 +5,8 @@ public class MathHelpers {
    * Gives the offset by taking the int FARTHEST from zero
    *
    * @param LeftWidth the width of the left object
-   * @param RigthWidth the width of the right object
-   * @return
+   * @param RightWidth the width of the right object
+   * @return The offset
    */
   public static int calculateOffset(int LeftWidth, int RightWidth) {
     // yes this looks quite bad, doing division with ints just doesnt work, so im converting
@@ -20,11 +20,11 @@ public class MathHelpers {
   }
 
   /**
-   * Gives the offset using the FARTHEST value from zero
-   * (float version)
+   * Gives the offset using the FARTHEST value from zero (float version)
+   *
    * @param LeftWidth The width of the left object (float)
    * @param RightWidth The width of the right object (float)
-   * @return
+   * @return The offset
    */
   public static int calculateOffset(float LeftWidth, float RightWidth) {
     // (15 - (10 * 2)) / 2
