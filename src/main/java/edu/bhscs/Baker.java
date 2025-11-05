@@ -7,6 +7,7 @@ public class Baker {
   // -- constructor --
   /**
    * Creates a default baker with a name
+   *
    * @param name The name of the baker
    */
   public Baker(String name) {

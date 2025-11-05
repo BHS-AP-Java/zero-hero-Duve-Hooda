@@ -105,6 +105,7 @@ public class Table implements Offsetable {
       }
     }
 
+    // length check
     if (legRow.length() > width) {
       legRow = legRow.substring(0, width - this.legsChar.length());
       legRow += this.legsChar;

@@ -25,7 +25,9 @@ public class Cake implements Offsetable {
   // -- constructors --
 
   /**
-   * Creates a cake with two ingredients (Strings). These ingredients are alternated when generating the cake
+   * Creates a cake with two ingredients (Strings). These ingredients are alternated when generating
+   * the cake
+   *
    * @param ingredient A string for ingredient #1
    * @param ingredient2 A string for ingredient #2
    */
@@ -34,9 +36,7 @@ public class Cake implements Offsetable {
     this.ingredient2 = ingredient2;
   }
 
-  /**
-   * The default constructor of cake, when ran it defaults ingredients to "a" and "b"
-   */
+  /** The default constructor of cake, when ran it defaults ingredients to "a" and "b" */
   public Cake() {
     this.ingredient = "a";
     this.ingredient2 = "b";
@@ -44,6 +44,7 @@ public class Cake implements Offsetable {
 
   /**
    * Name + age constructor of cake
+   *
    * @param name The name of the player
    * @param age The age of the player
    */
