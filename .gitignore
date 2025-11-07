@@ -46,6 +46,9 @@ ehthumbs.db
 Desktop.ini
 $RECYCLE.BIN/
 
+# generated javadoc (local)
+javadoc/
+
 # --- Tools we DO want committed (so do NOT ignore) ---
 # .devcontainer/    <-- keep this in repo if/when we add it
 # .mvn/             <-- keep Maven Wrapper directory

@@ -13,15 +13,16 @@
 
 package edu.bhscs;
 
-class Main {
+class App {
   public static void main(String[] args) {
     date10_27();
   }
 
   public static void date10_27() {
     Baker bob = new Baker("Bob");
-    Table t = new Table(5, 15);
-    Cake bDay = bob.bakes(20, "Suzzie");
+    Table t = new Table(5, 25);
+    Cake bDay = bob.bakes(10, "Suzzie");
+
     bDay.draw(t);
   }
 }
