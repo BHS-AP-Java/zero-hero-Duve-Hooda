@@ -17,12 +17,13 @@ package edu.bhscs;
 public class Table implements Offsetable {
   // -- fields and props --
   public int legs;
-  public int width;
 
   private int offset = 0;
 
   private String legsChar = "|";
   private String tableChar = "=";
+
+  private int width;
 
   // -- constructor
 
@@ -45,6 +46,10 @@ public class Table implements Offsetable {
 
   public void setOffset(int offset) {
     this.offset = offset;
+  }
+
+  public int getWidth() {
+    return this.width;
   }
 
   /**
@@ -130,6 +135,10 @@ public class Table implements Offsetable {
     }
 
     Console.getInstance().print(finalResult);
+  }
+
+  public void draw(Offsetable below) {
+    throw new UnsupportedOperationException("Unimplemented method 'draw'");
   }
 
   /*

@@ -21,10 +21,8 @@ class App {
   public static void date10_27() {
     Baker bob = new Baker("Bob");
     Table t = new Table(5, 25);
-    Cake bDay = bob.bakes(20, "Suzzie");
+    Cake bDay = bob.bakes(10, "Suzzie");
 
-    t.setLeg("|-|");
-    t.setTop("\\=/");
     bDay.draw(t);
   }
 }

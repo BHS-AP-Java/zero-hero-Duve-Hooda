@@ -19,6 +19,8 @@ public class Cake implements Offsetable {
   String name;
   int age;
 
+  private int width = -1;
+
   // interface requirements
   private int offset = 0;
 
@@ -51,9 +53,14 @@ public class Cake implements Offsetable {
   public Cake(String name, int age) {
     this.name = name;
     this.age = age;
+    this.width = age * 2;
   }
 
   // -- methods --
+
+  public int getWidth() {
+    return this.width;
+  }
 
   public int getOffset() {
     return this.offset;
@@ -61,23 +68,6 @@ public class Cake implements Offsetable {
 
   public void setOffset(int offset) {
     this.offset = offset;
-  }
-
-  /**
-   * Renders the top of the cake
-   *
-   * @param width Width of the cake
-   * @return The Rendered top of the cake
-   */
-  public String RenderTop(int width) {
-    String result = "";
-
-    if ((width % 2) == 1) {
-      // odd width
-      result += "_\n"; //  _
-    }
-
-    return result;
   }
 
   /**
@@ -170,20 +160,27 @@ public class Cake implements Offsetable {
   }
 
   /**
+   * A draw method that has no required arguments. Defaults to this.age as height.
+   */
+  public void draw() {
+    this.draw(this.age);
+  }
+
+  /**
    * Draws the cake using a table to be placed on
    *
    * <p>Really it just calls table.draw(offset) and cake.draw(offset); Just with some extra steps
    *
-   * @param table The table to place the cake on
+   * @param other The Offsetable object to place the cake on
    */
-  public void draw(Table table) {
+  public void draw(Offsetable other) {
     Console.getInstance()
         .println("Making a cake for: `" + this.name + "` who is: `" + this.age + "` years old!");
     this.ingredient = "#";
     this.ingredient2 = "@";
 
     // we double our age since the cake width is age * 2
-    int offset = MathHelpers.calculateOffset(table.width, this.age * 2);
+    int offset = MathHelpers.calculateOffset(other.getWidth(), this.age * 2);
 
     // attempting to use an interface here...
 
@@ -193,12 +190,12 @@ public class Cake implements Offsetable {
     // i think we should change this because this still feels like
     // "cake is the one who controls table"
     // which shouldn't be the way it works...
-    table.setOffset(-offset);
+    other.setOffset(-offset);
     this.setOffset(offset);
 
     // now draw!
     this.draw(this.age);
-    table.draw();
+    other.draw();
   }
   /*      /\
    *     /^\\
