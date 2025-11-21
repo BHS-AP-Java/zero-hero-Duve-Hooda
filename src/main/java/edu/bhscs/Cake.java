@@ -159,9 +159,7 @@ public class Cake implements Offsetable {
     Console.getInstance().print(cakeRendered);
   }
 
-  /**
-   * A draw method that has no required arguments. Defaults to this.age as height.
-   */
+  /** A draw method that has no required arguments. Defaults to this.age as height. */
   public void draw() {
     this.draw(this.age);
   }

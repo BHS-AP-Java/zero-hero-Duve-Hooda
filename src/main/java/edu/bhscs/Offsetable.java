@@ -9,8 +9,7 @@ public interface Offsetable {
   // Default centering logic — always clamps to 0 so alignment never goes negative.
   // this code is not used 99% of the time as we already have MathHelpers.calculateOffset();
   default int getOffset(Offsetable below) {
-    if (below == null)
-      return 0;
+    if (below == null) return 0;
     return Math.max(0, (below.getWidth() - this.getWidth()) / 2);
   }
 
@@ -20,6 +19,7 @@ public interface Offsetable {
 
   // expansion to Offsetable (so that it works with previous-related code)
   public void setOffset(int offset);
+
   public int getOffset();
 
   // objects must be able to be drawn without an offsetable
